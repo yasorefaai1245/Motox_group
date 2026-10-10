@@ -76,7 +76,7 @@ const editorialCategories = [
     text: 'Precision, response and a direct connection to every curve.',
     image: performanceImage,
     imageAlt: 'High-performance motorcycle',
-    filterCategory: 'Adventure',
+    filterCategory: 'Sport',
     className: 'category-performance',
   },
   {
