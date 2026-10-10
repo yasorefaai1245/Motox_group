@@ -225,8 +225,14 @@ export function BrandCollection({ brands }) {
             <ul className="marque-list">
               {brands.data.map((brand) => (
                 <li key={brand.id}>
-                  {brand.image && <CatalogImage src={brand.image} alt="" className="marque-image" />}
-                  <span>{brand.name}</span>
+                  <InternalLink
+                    className="marque-link"
+                    href={`/shop?brand=${encodeURIComponent(brand.id)}`}
+                    aria-label={`View ${brand.name} motorcycles`}
+                  >
+                    {brand.image && <CatalogImage src={brand.image} alt="" className="marque-image" />}
+                    <span>{brand.name}</span>
+                  </InternalLink>
                 </li>
               ))}
             </ul>

@@ -247,6 +247,12 @@ export function ShopPage() {
     [motorcycles],
   )
   const requestedCategory = new URLSearchParams(search).get('category') || ''
+  const requestedBrand = new URLSearchParams(search).get('brand') || ''
+
+  useEffect(() => {
+    if (!requestedBrand) return
+    setFilters((current) => ({ ...current, brands: [String(requestedBrand)] }))
+  }, [requestedBrand])
   const selectedCategory = loading || error || categories.includes(requestedCategory)
     ? requestedCategory
     : ''
