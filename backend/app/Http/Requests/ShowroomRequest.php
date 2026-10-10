@@ -18,15 +18,15 @@ class ShowroomRequest extends FormRequest
             || $this->isMethod('PATCH');
 
         $required = $isUpdate
-            ? 'sometimes|required'
-            : 'required';
+            ? ['sometimes', 'required']
+            : ['required'];
 
         return [
-            'city' => [$required, 'string', 'max:100'],
-            'address' => [$required, 'string', 'max:255'],
+            'city' => [...$required, 'string', 'max:100'],
+            'address' => [...$required, 'string', 'max:255'],
             'phone' => ['sometimes', 'nullable', 'string', 'max:50'],
             'type' => [
-                $required,
+                ...$required,
                 Rule::in(['showroom', 'service_center']),
             ],
             'opening_hours' => [

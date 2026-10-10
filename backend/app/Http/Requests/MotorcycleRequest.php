@@ -57,22 +57,22 @@ class MotorcycleRequest extends FormRequest
             || $this->isMethod('PATCH');
 
         $required = $isUpdate
-            ? 'sometimes|required'
-            : 'required';
+            ? ['sometimes', 'required']
+            : ['required'];
 
         return [
             'brand_id' => [
-                $required,
+                ...$required,
                 'integer',
                 'exists:brands,id',
             ],
             'name' => [
-                $required,
+                ...$required,
                 'string',
                 'max:255',
             ],
             'category' => [
-                $required,
+                ...$required,
                 'string',
                 'max:100',
             ],

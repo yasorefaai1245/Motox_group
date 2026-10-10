@@ -51,17 +51,17 @@ class BrandRequest extends FormRequest
             || $this->isMethod('PATCH');
 
         $required = $isUpdate
-            ? 'sometimes|required'
-            : 'required';
+            ? ['sometimes', 'required']
+            : ['required'];
 
         return [
             'name' => [
-                $required,
+                ...$required,
                 'string',
                 'max:255',
             ],
             'slug' => [
-                $required,
+                ...$required,
                 'string',
                 'max:255',
                 Rule::unique('brands', 'slug')->ignore($brandId),
