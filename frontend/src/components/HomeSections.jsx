@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import api from '../services/api.js'
 import { scrollToHomepageSection } from '../hooks/useAppLocation.js'
 import heroImage from '../assets/motox-alpine-hero.jpg'
@@ -240,6 +240,14 @@ export function BrandCollection({ brands }) {
 }
 
 export function FeaturedMotorcycles({ motorcycles, onSelect }) {
+  const trackRef = useRef(null)
+
+  const scrollCarousel = (direction) => {
+    const track = trackRef.current
+    if (!track) return
+    track.scrollBy({ left: direction * track.clientWidth, behavior: 'smooth' })
+  }
+
   return (
     <section className="section section-dark featured-motorcycles" id="motorcycles">
       <div className="section-heading">
@@ -254,7 +262,11 @@ export function FeaturedMotorcycles({ motorcycles, onSelect }) {
       <ResourceMessage resource={motorcycles} noun="motorcycles" />
       {!motorcycles.loading && !motorcycles.error && (
         motorcycles.data.length ? (
-          <div className="motorcycle-grid">
+          <div className="motorcycle-carousel">
+            <button className="carousel-arrow carousel-arrow-prev" type="button" aria-label="Previous motorcycles" onClick={() => scrollCarousel(-1)}>
+              ‹
+            </button>
+            <div className="motorcycle-track" ref={trackRef}>
             {motorcycles.data.map((motorcycle) => (
               <article className="motorcycle-card" key={motorcycle.id}>
                 <InternalLink
@@ -298,6 +310,10 @@ export function FeaturedMotorcycles({ motorcycles, onSelect }) {
                 </div>
               </article>
             ))}
+          </div>
+          <button className="carousel-arrow carousel-arrow-next" type="button" aria-label="Next motorcycles" onClick={() => scrollCarousel(1)}>
+            ›
+          </button>
           </div>
         ) : (
           <p className="resource-message">No active motorcycles are available right now.</p>
