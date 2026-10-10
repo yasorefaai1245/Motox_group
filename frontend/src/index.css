@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: #c87941;
+  color: #fff;
+}

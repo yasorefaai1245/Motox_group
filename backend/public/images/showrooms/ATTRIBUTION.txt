@@ -1,0 +1,30 @@
+All four photos are illustrative only and do not depict actual MotoX Group premises. Each was center-cropped and optimized to 870 x 600 pixels.
+
+doha-demo.jpg
+Title: Showroom BMW Motorrad Etoile
+Photographer: Pierre Chapron
+Source: https://commons.wikimedia.org/wiki/File:Showroom_BMW_Motorrad_Etoile.jpg
+License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+License text: https://creativecommons.org/licenses/by/3.0/
+
+dubai-demo.jpg
+Title: Suzuki Motorcycle dealership at SM City Cebu
+Photographer: Wide Awake!
+Source: https://commons.wikimedia.org/wiki/File:Suzuki_Motorcycle_dealership_at_SM_City_Cebu_(2024-05-25).jpg
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License text: https://creativecommons.org/licenses/by/4.0/
+
+riyadh-demo.jpg
+Title: TVS Showroom in Swargate, Pune, India
+Photographer: Albert Deccan
+Source: https://commons.wikimedia.org/wiki/File:TVS_Showroom_in_Swargate,_Pune,_India_.jpg
+License: Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License text: https://creativecommons.org/licenses/by-sa/3.0/
+
+cairo-demo.jpg
+Title: Top Mountain Motorcycle Museum-showroom-06ESD
+Photographer: Rikki Mitterer
+Source: https://commons.wikimedia.org/wiki/File:Hochgurgl-Top_Mountain_Motorcycle_Museum-showroom-06ESD.jpg
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+License text: https://creativecommons.org/licenses/by-sa/4.0/
+The Cairo image was cropped and resized from the 960 px Wikimedia Commons thumbnail.

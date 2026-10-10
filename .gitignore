@@ -1,0 +1,27 @@
+﻿# Secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Dependencies
+node_modules/
+vendor/
+.venv/
+venv/
+
+# Build files
+dist/
+build/
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Logs and local database
+*.log
+backend/database/*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
