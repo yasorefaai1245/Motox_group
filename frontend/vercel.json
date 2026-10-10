@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/api/:path*", "destination": "https://motox-backend.wasmer.app/api/:path*" },
+    { "source": "/sanctum/:path*", "destination": "https://motox-backend.wasmer.app/sanctum/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
