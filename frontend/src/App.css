@@ -2111,3 +2111,19 @@ h2 em {
   .marque-list li { width: calc(50% - 9px); }
 }
 
+/* Brand cards link to their shop filter */
+.marque-list li {
+  padding: 0;
+}
+
+.marque-link {
+  width: 100%;
+  padding: 22px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
