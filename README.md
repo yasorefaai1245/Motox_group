@@ -251,6 +251,68 @@ schema changes with `php artisan migrate --force`; do not use
   3.0), and Rikki Mitterer (CC BY-SA 4.0). The corresponding source links and
   license labels are maintained in `frontend/src/components/HomeSections.jsx`.
 
+## Credits, sources, and AI disclosure
+
+This project was created for a **technical assessment and for illustration only**.
+It is **not a commercial product** and must not be used commercially. It is not
+affiliated with, endorsed by, or sponsored by any motorcycle manufacturer,
+dealer, or website mentioned below.
+
+### Design reference
+
+- The visual design, layout, and user experience follow the project's own
+  Figma prototype (linked in the section above).
+- Catalog listings reference models published on the manufacturers' official
+  websites (the seeded descriptions mention the official Qatar sites, e.g.
+  Honda Qatar). Prices, stock, and availability have **not** been verified.
+- The site is not a copy of any manufacturer or dealer website; any
+  similarity is for demonstration purposes only.
+
+### Images
+
+| Where | Source | License / note |
+|---|---|---|
+| `frontend/src/assets` (hero, category, and showroom images) | Demo assets supplied with the project; some are AI-generated | Illustrative only — not real MotoX premises, stock, or dealerships |
+| Product-card images in `MotoX_Images_Original_Size/Images.zip` | Supplied with the project | Representative visuals, not confirmed photos of the exact variants |
+| Experience-section image | [Unsplash](https://images.unsplash.com/photo-1558981403-c5f9899a28bc) | [Unsplash License](https://unsplash.com/license) |
+| Showroom photos (when the API returns the Wikimedia paths) | Wikimedia Commons — Pierre Chapron, Wide Awake!, Albert Deccan, Rikki Mitterer | CC BY 3.0 / CC BY 4.0 / CC BY-SA 3.0 / CC BY-SA 4.0 (credits shown on the page) |
+| Deployed demo: photos of the extra catalog motorcycles | [Wikimedia Commons](https://commons.wikimedia.org/) (linked by URL, not stored in this repository) | Each file's author and free license are listed on its Commons file page |
+| Images uploaded from the admin panel | Provided by the person uploading | Uploader is responsible for having the rights |
+| `react.svg`, `vite.svg` | Vite + React project template | MIT |
+
+### Brand names and logos
+
+- Honda, Royal Enfield, Yamaha, Kawasaki, Suzuki, BMW Motorrad, Ducati, KTM,
+  Harley-Davidson, and Triumph names and logos are trademarks of their
+  respective owners and are shown only to illustrate a catalog.
+- Local logo sources are listed in the section above. The deployed demo loads
+  brand logos from Wikimedia Commons by URL. Logos may be protected by
+  trademark law regardless of their copyright status.
+
+### Fonts
+
+- [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) and
+  [DM Sans](https://fonts.google.com/specimen/DM+Sans), loaded from Google
+  Fonts under the [SIL Open Font License 1.1](https://openfontlicense.org/).
+
+### Icons
+
+- No icon library is used. Arrows and similar symbols (`↗`, `→`, `‹`, `›`)
+  are standard Unicode characters.
+
+### AI-generated content
+
+- **Images:** some local motorcycle and showroom visuals in `frontend/src/assets`
+  are AI-generated, as noted above. No AI-generated images were added to the
+  deployed catalog; its extra photos and logos come from Wikimedia Commons.
+- **Code:** AI assistance (Claude, by Anthropic) was used for development and
+  deployment work, including the Wasmer/Vercel setup, CORS and API proxy
+  configuration, validation fixes, migrations, the homepage motorcycle
+  carousel, brand cards linking to the shop filter, the 404 page, and the
+  admin image-upload field.
+- **Text:** AI assisted with documentation and wrote the short descriptions of
+  the extra catalog motorcycles and brands in the deployed demo.
+
 ## Assessment hand-off
 
 Add the deployment URL above before submitting. Confirm that the local MySQL
