@@ -32,7 +32,7 @@ class ShowroomRequest extends FormRequest
             'opening_hours' => [
                 'sometimes', 'nullable', 'string', 'max:255',
             ],
-            'image' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'image' => ['sometimes', 'nullable', 'string', 'max:5000000'],
             'status' => [
                 'sometimes',
                 Rule::in(['active', 'inactive']),

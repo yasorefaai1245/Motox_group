@@ -91,7 +91,7 @@ class MotorcycleRequest extends FormRequest
                 'sometimes',
                 'nullable',
                 'string',
-                'max:255',
+                'max:5000000',
             ],
             'status' => [
                 'sometimes',
