@@ -42,7 +42,9 @@ function priceText(price) {
 
 function MotorcycleImage({ image, name }) {
   const [failed, setFailed] = useState(false)
-  const src = image ? api.getUri({ url: image }) : ''
+  const src = image
+    ? (image.startsWith('data:') ? image : api.getUri({ url: image }))
+    : ''
 
   if (!src || failed) {
     return (

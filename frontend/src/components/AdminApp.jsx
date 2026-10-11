@@ -880,6 +880,85 @@ function TextAreaField({ label, name, value, onChange }) {
   )
 }
 
+function ImageField({ value, onChange }) {
+  const [error, setError] = useState('')
+  const [processing, setProcessing] = useState(false)
+  const isUpload = typeof value === 'string' && value.startsWith('data:')
+
+  const handleFile = (event) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file) return
+
+    if (!file.type.startsWith('image/')) {
+      setError('Please choose an image file (JPG, PNG or WebP).')
+      return
+    }
+
+    setError('')
+    setProcessing(true)
+    const reader = new FileReader()
+    reader.onerror = () => {
+      setProcessing(false)
+      setError('This file could not be read.')
+    }
+    reader.onload = () => {
+      const img = new Image()
+      img.onerror = () => {
+        setProcessing(false)
+        setError('This image could not be read.')
+      }
+      img.onload = () => {
+        const maxSize = 1200
+        const scale = Math.min(1, maxSize / Math.max(img.width, img.height))
+        const canvas = document.createElement('canvas')
+        canvas.width = Math.round(img.width * scale)
+        canvas.height = Math.round(img.height * scale)
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height)
+        const type = file.type === 'image/png' ? 'image/png' : 'image/jpeg'
+        const dataUrl = canvas.toDataURL(type, 0.82)
+        setProcessing(false)
+        if (dataUrl.length > 4500000) {
+          setError('This image is too large. Please choose a smaller one.')
+          return
+        }
+        onChange(dataUrl)
+      }
+      img.src = reader.result
+    }
+    reader.readAsDataURL(file)
+  }
+
+  return (
+    <div className="admin-field-wide admin-image-field">
+      <label>
+        Image URL or path
+        <input
+          name="image"
+          type="text"
+          value={isUpload ? '' : value ?? ''}
+          placeholder={isUpload ? 'Uploaded image selected' : 'https://example.com/photo.jpg'}
+          onChange={(event) => onChange(event.target.value)}
+        />
+      </label>
+      <label className="admin-image-upload">
+        Or upload from your device
+        <input type="file" accept="image/*" onChange={handleFile} />
+      </label>
+      {processing && <p className="admin-image-note">Preparing image…</p>}
+      {error && <p className="admin-image-error">{error}</p>}
+      {value && (
+        <div className="admin-image-preview">
+          <img src={value} alt="Selected image preview" />
+          <button type="button" className="admin-image-remove" onClick={() => onChange('')}>
+            Remove image
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function AdminEditor({ resource, recordId, user }) {
   const config = resources[resource]
   const isEdit = Boolean(recordId)
@@ -1043,7 +1122,7 @@ function AdminEditor({ resource, recordId, user }) {
             <TextField label="Brand name" name="name" value={record.name} onChange={(value) => update('name', value)} required maxLength="255" />
             <TextField label="Slug" name="slug" value={record.slug} onChange={(value) => update('slug', value)} required maxLength="255" />
             <TextAreaField label="Description" name="description" value={record.description} onChange={(value) => update('description', value)} />
-            <TextField label="Image URL or path" name="image" value={record.image} onChange={(value) => update('image', value)} maxLength="255" />
+            <ImageField value={record.image} onChange={(value) => update('image', value)} />
           </>
         )}
         {resource === 'motorcycles' && (
@@ -1059,7 +1138,7 @@ function AdminEditor({ resource, recordId, user }) {
             <TextField label="Category" name="category" value={record.category} onChange={(value) => update('category', value)} required maxLength="100" />
             <TextField label="Price" name="price" value={record.price} onChange={(value) => update('price', value)} type="number" min="0" step="0.01" />
             <TextAreaField label="Description" name="description" value={record.description} onChange={(value) => update('description', value)} />
-            <TextField label="Image URL or path" name="image" value={record.image} onChange={(value) => update('image', value)} maxLength="255" />
+            <ImageField value={record.image} onChange={(value) => update('image', value)} />
           </>
         )}
         {resource === 'services' && (
@@ -1078,7 +1157,7 @@ function AdminEditor({ resource, recordId, user }) {
               </select>
             </label>
             <TextAreaField label="Description" name="description" value={record.description} onChange={(value) => update('description', value)} />
-            <TextField label="Image URL or path" name="image" value={record.image} onChange={(value) => update('image', value)} maxLength="255" />
+            <ImageField value={record.image} onChange={(value) => update('image', value)} />
           </>
         )}
         {resource === 'showrooms' && (
@@ -1094,7 +1173,7 @@ function AdminEditor({ resource, recordId, user }) {
               </select>
             </label>
             <TextField label="Opening hours" name="opening_hours" value={record.opening_hours} onChange={(value) => update('opening_hours', value)} maxLength="255" />
-            <TextField label="Image URL or path" name="image" value={record.image} onChange={(value) => update('image', value)} maxLength="255" />
+            <ImageField value={record.image} onChange={(value) => update('image', value)} />
             <fieldset className="admin-brand-associations admin-field-wide">
               <legend>Associated brands</legend>
               {brands.map((brand) => (

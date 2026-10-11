@@ -125,7 +125,7 @@ function ResourceMessage({ resource, noun }) {
 function CatalogImage({ src, alt, className = '', useApiBase = true }) {
   const [failed, setFailed] = useState(false)
   const imageUrl = src
-    ? (useApiBase ? api.getUri({ url: src }) : src)
+    ? (useApiBase && !src.startsWith('data:') ? api.getUri({ url: src }) : src)
     : ''
 
   return (
