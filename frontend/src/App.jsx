@@ -14,6 +14,7 @@ import AdminApp from './components/AdminApp.jsx'
 import { MotorcycleDetailsPage, ShopPage } from './components/ShopPage.jsx'
 import { LoginPage, RegisterPage } from './components/AuthPages.jsx'
 import PublicLayout from './components/PublicLayout.jsx'
+import InternalLink from './components/InternalLink.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { useAppLocation } from './hooks/useAppLocation.js'
 import './App.css'
@@ -60,6 +61,22 @@ function Homepage() {
   )
 }
 
+function NotFoundPage() {
+  return (
+    <main className="not-found-page">
+      <p className="eyebrow">Error 404</p>
+      <h1>Page not <em>found.</em></h1>
+      <p className="not-found-text">
+        The page you are looking for doesn’t exist or may have been moved.
+      </p>
+      <div className="not-found-actions">
+        <InternalLink className="button button-copper" href="/">Back to home</InternalLink>
+        <InternalLink className="button not-found-secondary" href="/shop">Explore motorcycles</InternalLink>
+      </div>
+    </main>
+  )
+}
+
 function App() {
   const { pathname } = useAppLocation()
 
@@ -75,6 +92,8 @@ function App() {
     const motorcycleMatch = pathname.match(/^\/motorcycles\/([^/]+)\/?$/)
     if (motorcycleMatch) {
       page = <MotorcycleDetailsPage motorcycleId={decodeURIComponent(motorcycleMatch[1])} />
+    } else if (pathname !== '/' && pathname !== '' && pathname !== '/index.html') {
+      page = <NotFoundPage />
     }
   }
 
