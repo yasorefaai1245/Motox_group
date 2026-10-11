@@ -16,17 +16,47 @@ class MotorcycleCatalogSeederTest extends TestCase
         $this->seed(\Database\Seeders\MotorcycleCatalogSeeder::class);
         $this->seed(\Database\Seeders\MotorcycleCatalogSeeder::class);
 
-        $this->assertSame(2, Brand::count());
-        $this->assertSame(4, Motorcycle::count());
+        $this->assertSame(6, Brand::count());
+        $this->assertSame(10, Motorcycle::count());
         $this->assertSame(0, Motorcycle::whereNotNull('price')->count());
 
         $this->getJson('/api/public/brands')
             ->assertOk()
-            ->assertJsonCount(2);
+            ->assertJsonCount(6)
+            ->assertJsonPath(
+                '0.image',
+                '/images/brands/bmw.svg'
+            );
         $this->getJson('/api/public/motorcycles')
             ->assertOk()
-            ->assertJsonCount(4, 'data')
-            ->assertJsonPath('data.0.price', null);
+            ->assertJsonCount(10, 'data')
+            ->assertJsonPath('data.0.price', null)
+            ->assertJsonPath(
+                'data.0.image',
+                '/images/motorcycles/ktm-390-duke.jpg'
+            );
+
+        foreach ([
+            'honda',
+            'royal-enfield',
+            'yamaha',
+            'bmw-motorrad',
+            'triumph',
+            'ktm',
+        ] as $slug) {
+            $brand = Brand::where('slug', $slug)->firstOrFail();
+            $this->assertNotEmpty($brand->image);
+            $this->assertFileExists(
+                public_path(ltrim($brand->image, '/'))
+            );
+        }
+
+        foreach (Motorcycle::all() as $motorcycle) {
+            $this->assertNotEmpty($motorcycle->image);
+            $this->assertFileExists(
+                public_path(ltrim($motorcycle->image, '/'))
+            );
+        }
     }
 
     public function test_rerunning_catalog_seeder_does_not_overwrite_existing_catalog_edits(): void

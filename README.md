@@ -228,6 +228,18 @@ schema changes with `php artisan migrate --force`; do not use
   and showroom visuals are AI-generated or otherwise illustrative demo assets;
   they do not represent verified stock, real MotoX premises, or authorized
   dealerships.
+- The motorcycle product-card images were supplied in
+  `MotoX_Images_Original_Size/Images.zip`. They are representative catalog
+  visuals and are not confirmed photographs of the exact model variants.
+- The catalog contains ten real motorcycle model listings, but local prices
+  and current availability have not been verified. Brand marks are sourced
+  from [Honda on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Honda_Logo.svg),
+  [Royal Enfield](https://www.royalenfield.com/content/dam/royal-enfield/india/logos/logo.svg),
+  [Yamaha](https://www.yamaha-motor.eu/etc.clientlibs/yme/clientlibs/clientlib-react/resources/apple-touch-icon.png),
+  [BMW via Simple Icons](https://cdn.simpleicons.org/bmw),
+  [Triumph](https://media.triumphmotorcycles.co.uk/image/upload/f_auto/q_auto:eco/sitecoremedialibrary/media-library/misc/misc-images/logo.svg),
+  and [KTM](https://www.ktm.com/content/dam/websites/ktm-com/language-masters/en/logo/37860_KTM_LogoPodium_orange_RGB.jpg).
+  Manufacturer names and marks remain the property of their respective owners.
 - The four seeded showrooms (Doha, Dubai, Riyadh, and Cairo) are fictional demo
   records. Their addresses are explicitly marked as fictional; phone numbers
   and opening hours are not fabricated.

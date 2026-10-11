@@ -1246,15 +1246,16 @@ h2 em {
 
 .form-feedback {
   margin: 0;
-  padding: 13px 14px;
-  font-size: 12px;
+  padding: 15px 16px;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.6;
 }
 
 .form-feedback.success {
-  border: 1px solid rgba(106, 176, 126, 0.38);
-  background: rgba(52, 104, 66, 0.24);
-  color: #b7e0c0;
+  border: 1px solid #4c9b65;
+  background: #183b27;
+  color: #f3fff5;
 }
 
 .form-feedback.error {
